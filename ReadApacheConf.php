@@ -17,11 +17,12 @@ function ReadApacheConf(
 	$Params //The list of config+user combined parameters
 ) {
 	//Read in the apache config file
+	require_once(__DIR__.'/cfile_get_contents.php');
 	$AllowConfigOverride=$Config['AllowConfigOverride'];
 	$ApacheConfPath=&$Config['ApacheConfPath'];
 	if($AllowConfigOverride && isset($Params['ApacheConf'])) //Overwrite from parameters
 		$ApacheConfPath=$Params['ApacheConf'];
-	$ApacheConfData=@file_get_contents($ApacheConfPath);
+	$ApacheConfData=cfile_get_contents($ApacheConfPath);
 	if(!$ApacheConfData)
 		return OL('Cannot read the apache configuration file at: '.$ApacheConfPath.' : '.GetLastError());
 

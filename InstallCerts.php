@@ -66,6 +66,7 @@ END
 	}
 
 	//Get the locations of the certificates
+	require_once(__DIR__.'/cfile_get_contents.php');
 	$CertDataPerDocRoot=Array(); //Array(DOC_ROOT=>Array([string]cert=>CERT_CRT_TEXT, [string] privkey=>CERT_PRIVATE_KEY_TEXT, [string] chain=>CERT_CA_CHAIN), ...)
 	$Only1Cert=(strcasecmp($Config['DistributionType'], 'AllInOne')==0 || count($LEResponses)==1); //If only 1 certificate is being installed
 	foreach($LEResponses as $DocRoot => $LEReturn)
@@ -157,9 +158,9 @@ function GetCertLoc(
 	//Load the certificates’ data
 	$CertData=Array();
 	foreach(Array('cert', 'privkey', 'chain') as $CertType)
-		if(!($CertData[$CertType]=@file_get_contents("$FullChainPath$CertType.pem")))
+		if(!($CertData[$CertType]=cfile_get_contents("$FullChainPath$CertType.pem")))
 			return OL(
-				"Cannot read $CertType certificate$ForDocRootStr at: $FullChainPath.$CertType.pem : ".
+				"Cannot read $CertType certificate$ForDocRootStr at: $FullChainPath$CertType.pem : ".
 				($CertData[$CertType]===FALSE ? GetLastError() : 'File is empty')
 			);
 	$CertDataPerDocRoot[$DocRoot]=$CertData;

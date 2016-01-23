@@ -41,7 +41,6 @@ Other parameter info:
 * Any parameter marked as “File” uses file_get_contents(), so it can contain PHP fopen wrappers available on your system like SSH (https://secure.php.net/manual/en/wrappers.php)
     Example (remote file via SSH): ssh2.sftp://user:pass@example.com:22/etc/httpd.conf
     Example (multiple remote apache config files via SSH): ssh2.exec://user:pass@example.com/find /etc/httpd/conf* -type f -print0 | xargs -0 cat
-    	Warning: ssh2.exec is currently broken on the php.ssh2 library (v<=0.12), but I have submitted a patch for it
 * Any parameter marked as “Exec” will be run with exactly what is given through the command line via php.exec()
     Paths and parameters that you give are NOT ESCAPED, so you must do so yourself
     This generally just entails putting quotes around any path or parameter that includes a space
