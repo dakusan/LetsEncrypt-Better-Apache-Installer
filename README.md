@@ -1,4 +1,7 @@
-﻿[LetsEncrypt Better Apache Installer v1.0.0<br>
+> [!CAUTION]
+> This project was created before certbot was available and is now obsolete.
+ 
+ [LetsEncrypt Better Apache Installer v1.0.0<br>
 Website: http://www.castledragmire.com/Projects/LetsEncrypt_Better_Apache_Installer](http://www.castledragmire.com/Projects/LetsEncrypt_Better_Apache_Installer)<br>
 GitHub: https://github.com/dakusan/LetsEncrypt-Better-Apache-Installer/
 
